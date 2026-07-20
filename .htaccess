@@ -1,12 +1,6 @@
-DirectoryIndex index.html index.php
 
-RewriteEngine On
+DirectoryIndex index.php index.html index.htm index2.html
 
-# Forzar lectura de sitemap si da 404 falso
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^sitemap\.txt$ sitemap.txt [L]
-
-# Forzar redirección HTTPS limpia con Cloudflare
-RewriteCond %{HTTP:X-Forwarded-Proto} =http
-RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+ErrorDocument 403 https://attenasmc.net/error403/
+ErrorDocument 404 https://attenasmc.net/error404/
+ErrorDocument 500 https://attenasmc.net/error500/
