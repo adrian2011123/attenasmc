@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AttenasMC | Servidor de Minecraft</title>
+    <meta name="description" content="Comunidad oficial de AttenasMC. Explora nuestro servidor, entérate de las últimas novedades, eventos y únete a nuestra comunidad de jugadores hoy mismo.">
+    <link rel="shortcut icon" href="logo.ico" type="image/x-icon">
+	<meta name="google-adsense-account" content="ca-pub-6430533287906991">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6430533287906991"
+     crossorigin="anonymous"></script>
+    <style>
+        /* Base y Tipografía */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: #0d0f14;
+            color: #f1f3f9;
+            overflow-x: hidden;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Bloque de Presentación Principal (Hero) usando fondo.png */
+        .hero {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            background: linear-gradient(rgba(13, 15, 20, 0.4), #0d0f14), url('fondo.png') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* MENÚ SUPERIOR (Estilo de la imagen de referencia) */
+        navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 8%;
+            width: 100%;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #ffffff;
+            text-transform: uppercase;
+        }
+        .nav-logo img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 0.95rem;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        .nav-links a:hover {
+            opacity: 1;
+        }
+        
+        /* Botones del menú derecho */
+        .btn-nav-shop {
+            background-color: #2ecc71;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: background 0.3s;
+        }
+        .btn-nav-shop:hover {
+            background-color: #27ae60;
+        }
+        .btn-nav-ip {
+            background-color: #ffaa00;
+            color: #0d0f14;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .btn-nav-ip:hover {
+            transform: scale(1.04);
+        }
+
+        /* TEXTOS CENTRALES DE BIENVENIDA */
+        .hero-text {
+            padding: 40px 8%;
+            margin-top: 60px;
+        }
+        .hero-text h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            color: #ffffff;
+            line-height: 1.1;
+        }
+        .hero-text h1 span {
+            color: #ffaa00;
+        }
+        .hero-text p {
+            font-size: 1.3rem;
+            color: #a3a8b4;
+            margin-top: 15px;
+        }
+
+        /* GRID INFERIOR DE 3 TARJETAS */
+        .hero-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 40px 8%;
+            margin-top: auto;
+        }
+        .card {
+            border-radius: 16px;
+            padding: 35px 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 190px;
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-6px);
+        }
+        .card h3 {
+            font-size: 1.9rem;
+            font-weight: 800;
+            color: #ffffff;
+        }
+        .card p {
+            font-size: 0.95rem;
+            margin-top: 6px;
+            opacity: 0.9;
+        }
+        .card .card-btn {
+            background: #ffffff;
+            color: #000000;
+            padding: 10px 24px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            margin-top: 25px;
+            align-self: flex-start;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .card-yellow {
+            background: linear-gradient(135deg, #ffaa00 0%, #e68a00 100%);
+            color: #211300;
+        }
+        .card-yellow p { color: #5c3500; }
+        
+        .card-blue {
+            background: linear-gradient(135deg, #3b62ff 0%, #1a42e6 100%);
+            color: #ffffff;
+        }
+        .card-blue p { color: #e0e6ff; }
+
+        .card-dark {
+            background-color: #161a24;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            color: #ffffff;
+        }
+        .card-dark p { color: #a3a8b4; }
+        .card-dark .card-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+        }
+
+        /* SECCIONES COMPLEMENTARIAS DE TEXTO */
+        .sections-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        .content-block {
+            background: #161a24;
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            margin-bottom: 40px;
+        }
+        .block-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        /* Listado de normas */
+        .rules-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .rule-card {
+            background: rgba(255, 255, 255, 0.01);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #ffaa00;
+        }
+        .rule-card strong {
+            color: #ffffff;
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 4px;
+        }
+        .rule-card p {
+            color: #a3a8b4;
+        }
+
+        /* PIE DE PÁGINA */
+        footer {
+            background: #090b0f;
+            padding: 50px 20px;
+            text-align: center;
+            color: #535766;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.02);
+        }
+        footer p { margin-bottom: 8px; }
+        .mojang-disclaimer {
+            max-width: 700px;
+            margin: 15px auto 0 auto;
+            font-size: 0.8rem;
+            line-height: 1.4;
+            color: #414452;
+        }
+    </style>
+</head>
+<body>
+<!-- BLOQUE HERO (CABECERA + TARJETAS) -->
+<div class="hero"><!-- BARRA DE NAVEGACIÓN --> <navbar>
+<div class="nav-logo"><img src="logo.png" alt="AttenasMC" /> AttenasMC</div>
+<div class="nav-right">
+<ul class="nav-links">
+<li><a href="/">Inicio</a></li>
+<li><a href="/nosotros">Nosotros</a></li>
+<!-- Enlace limpio corregido -->
+<li><a href="/normas">Normas</a></li>
+<li><a href="/privacidad">Privacidad</a></li>
+</ul>
+<a href="https://shop.attenasmc.net" target="_blank" class="btn-nav-shop" rel="noopener"> <svg width="15" height="15" fill="currentColor" viewbox="0 0 16 16"><path d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625v-.255a1.5 1.5 0 0 1 .361-.976L2.97 1.35zM1.994 5.37a1.375 1.375 0 0 0 2.715.118a.5.5 0 0 1 .914-.002A1.375 1.375 0 0 0 8 5.25a1.375 1.375 0 0 0 2.377.236a.5.5 0 0 1 .914.002a1.375 1.375 0 0 0 2.715-.118L11.722 2H4.278L1.994 5.37zM1 7.875v5.5A1.625 1.625 0 0 0 2.625 15h10.75A1.625 1.625 0 0 0 15 13.375v-5.5c-.29.156-.613.25-.953.275v5.1a.625 0 0 1-.625.625H2.625a.625 0 0 1-.625-.625v-5.1c-.34-.025-.663-.119-.953-.275z"></path></svg> Tienda </a>
+<div class="btn-nav-ip" onclick="copiarIP()" id="btnText">attenasmc.net</div>
+</div>
+</navbar> <!-- TEXTO CENTRAL -->
+<div class="hero-text">
+<h1>Bienvenido a<br /><span>AttenasMC Network</span></h1>
+<p>La mejor experiencia Survival te espera.</p>
+        <!-- FILA DE TRES TARJETAS SUPERPUESTAS CON ENLACES CORREGIDOS -->
+<div class="hero-cards">
+<a href="https://shop.attenasmc.net" target="_blank" class="card card-yellow">
+<div>
+<h3>Tienda</h3>
+<p>Adquiere beneficios exclusivos</p>
+</div>
+<button class="card-btn" onclick="window.location.href='https://shop.attenasmc.net'">Comprar Ahora</button>
+</a>
+
+<a href="/normas" class="card card-blue">
+<div>
+<h3>Normativa</h3>
+<p>Conoce las reglas del servidor</p>
+</div>
+<button class="card-btn" onclick="window.location.href='/normas'">Leer Normas</button>
+</a>
+
+<a href="https://discord.gg" target="_blank" class="card card-dark">
+<div>
+<h3>Comunidad</h3>
+<p>Únete a nuestro servidor de Discord</p>
+</div>
+<button class="card-btn" onclick="window.open('https://discord.gg/bn2q9yH2WT', '_blank')">Entrar al Discord</button>
+</a>
+</div>
+
+<!-- SECCIONES DE TEXTO INFERIORES -->
+<div class="sections-container">
+<p>Todos los derechos reservados. 2026 ® AttenasMC</p>
+<p>AttenasMC no está afiliado de ninguna manera con Mojang, AB. Tampoco debe considerarse respaldado por Mojang, AB. Minecraft es una marca comercial de Mojang Synergies AB.</p>
+</div>
+<!-- CÓDIGO JAVASCRIPT -->
+<p>
+<script>
+        function copiarIP() {
+            const ip = "attenasmc.net";
+            navigator.clipboard.writeText(ip).then(() => {
+                const btn = document.getElementById("btnText");
+                btn.innerText = "¡IP COPIADA!";
+                btn.style.backgroundColor = "#2ecc71";
+                btn.style.color = "#ffffff";
+
+                setTimeout(() => {
+                    btn.innerText = "attenasmc.net";
+                    btn.style.backgroundColor = "#ffaa00";
+                    btn.style.color = "#0d0f14";
+                }, 2000);
+            });
+        }
+    </script>
+</p>
