@@ -1,0 +1,413 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Transcript | AttenasMC</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #080a0f;
+            color: #ffffff;
+            font-family: Arial, Helvetica, sans-serif;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .header {
+            background: #10131a;
+            border: 1px solid #242a35;
+            border-radius: 14px 14px 0 0;
+            padding: 22px;
+        }
+
+        .brand {
+            color: #2ecc71;
+            font-size: 22px;
+            font-weight: 800;
+        }
+
+        .subtitle {
+            color: #8c95a5;
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+        .info {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+
+            background: #0d1016;
+            border-left: 1px solid #242a35;
+            border-right: 1px solid #242a35;
+
+            padding: 18px 22px;
+        }
+
+        .info-box {
+            background: #131720;
+            border: 1px solid #242a35;
+            border-radius: 9px;
+            padding: 12px;
+        }
+
+        .label {
+            color: #697383;
+            font-size: 10px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .value {
+            color: #e8ebef;
+            font-size: 12px;
+        }
+
+        .transcript {
+            background: #0d1016;
+            border: 1px solid #242a35;
+            border-top: 0;
+            padding: 25px 22px;
+            border-radius: 0 0 14px 14px;
+        }
+
+        .message {
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .message:last-child {
+            border-bottom: 0;
+        }
+
+        .message-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+
+        .author {
+            color: #2ecc71;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .time {
+            color: #596272;
+            font-size: 11px;
+        }
+
+        .content {
+            color: #c4cad3;
+            font-size: 13px;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        .expired {
+            text-align: center;
+            background: #10131a;
+            border: 1px solid #242a35;
+            border-radius: 14px;
+            padding: 40px 25px;
+        }
+
+        .expired h1 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .expired p {
+            color: #8c95a5;
+            font-size: 13px;
+        }
+
+        .footer {
+            text-align: center;
+            color: #555e6d;
+            font-size: 11px;
+            margin-top: 15px;
+        }
+
+        @media (max-width: 700px) {
+
+            .info {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+        @media (max-width: 450px) {
+
+            .info {
+                grid-template-columns: 1fr;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="header">
+
+            <div class="brand">
+                ATTENASMC
+            </div>
+
+            <div class="subtitle">
+                Historial de soporte
+            </div>
+
+        </div>
+
+
+        <div class="info">
+
+            <div class="info-box">
+
+                <div class="label">
+                    Ticket
+                </div>
+
+                <div class="value" id="ticket">
+                    Cargando...
+                </div>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <div class="label">
+                    Usuario
+                </div>
+
+                <div class="value" id="user">
+                    Cargando...
+                </div>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <div class="label">
+                    Categoría
+                </div>
+
+                <div class="value" id="category">
+                    Cargando...
+                </div>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <div class="label">
+                    Cerrado por
+                </div>
+
+                <div class="value" id="closedBy">
+                    Cargando...
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="transcript" id="transcript">
+
+            <div class="message">
+
+                <div class="message-header">
+
+                    <span class="author">
+                        Sistema
+                    </span>
+
+                    <span class="time">
+                        Ahora
+                    </span>
+
+                </div>
+
+                <div class="content">
+                    Cargando transcript...
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer">
+            AttenasMC · Este transcript se conservará durante 60 días.
+        </div>
+
+    </div>
+
+
+    <script>
+
+        /*
+         * Esta plantilla será conectada posteriormente
+         * al backend del bot.
+         *
+         * El backend proporcionará:
+         *
+         * - ID del ticket
+         * - Usuario
+         * - Categoría
+         * - Staff que cerró
+         * - Mensajes
+         * - Fecha
+         * - Fecha de expiración
+         *
+         */
+
+
+        const demo = {
+
+            ticket: "#1248",
+
+            user: "Adrian",
+
+            category: "Soporte general",
+
+            closedBy: "Staff01",
+
+            messages: [
+
+                {
+                    author: "Adrian",
+                    time: "20:14:32",
+                    content: "Hola, tengo un problema con mi cuenta."
+                },
+
+                {
+                    author: "Staff01",
+                    time: "20:15:08",
+                    content: "Hola. Explícame qué problema tienes."
+                },
+
+                {
+                    author: "Adrian",
+                    time: "20:16:21",
+                    content: "No puedo entrar al servidor."
+                }
+
+            ]
+
+        };
+
+
+        /*
+         * Mostrar datos de prueba
+         */
+
+        document.getElementById("ticket").textContent =
+            demo.ticket;
+
+        document.getElementById("user").textContent =
+            demo.user;
+
+        document.getElementById("category").textContent =
+            demo.category;
+
+        document.getElementById("closedBy").textContent =
+            demo.closedBy;
+
+
+        const transcript =
+            document.getElementById("transcript");
+
+
+        transcript.innerHTML = "";
+
+
+        demo.messages.forEach(message => {
+
+            const element =
+                document.createElement("div");
+
+            element.className = "message";
+
+
+            const header =
+                document.createElement("div");
+
+            header.className = "message-header";
+
+
+            const author =
+                document.createElement("span");
+
+            author.className = "author";
+
+            author.textContent =
+                message.author;
+
+
+            const time =
+                document.createElement("span");
+
+            time.className = "time";
+
+            time.textContent =
+                message.time;
+
+
+            header.appendChild(author);
+
+            header.appendChild(time);
+
+
+            const content =
+                document.createElement("div");
+
+            content.className = "content";
+
+            content.textContent =
+                message.content;
+
+
+            element.appendChild(header);
+
+            element.appendChild(content);
+
+
+            transcript.appendChild(element);
+
+        });
+
+    </script>
+
+</body>
+</html>
+```
